@@ -21,7 +21,12 @@ const TextForm = (props) => {
    };
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{
+          color: `${props.mode === "light" ? "black" : "white"}`,
+        }}
+      >
         <h2>{props.heading}</h2>
         <div className="mb-3">
           <textarea
@@ -29,6 +34,12 @@ const TextForm = (props) => {
             value={text}
             id="myBox"
             rows="8"
+            style={{
+              backgroundColor: `${
+                props.mode === "light" ? "white" : "#6c757d"
+              }`,
+              color: `${props.mode === "light" ? "black" : "white"}`,
+            }}
             onChange={ChangeHandler}
           ></textarea>
         </div>
@@ -46,7 +57,12 @@ const TextForm = (props) => {
         </button>
       </div>
       <hr />
-      <div className="container my-3">
+      <div
+        className="container my-3"
+        style={{
+          color: `${props.mode === "light" ? "black" : "white"}`,
+        }}
+      >
         <h1>Your text Summary</h1>
 
         <p>
@@ -54,7 +70,7 @@ const TextForm = (props) => {
         </p>
         <p>{0.008 * text.split(" ").length} Minutes to read</p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Enter something in the Textbox to preview it"}</p>
       </div>
     </>
   );
