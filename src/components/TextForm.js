@@ -87,9 +87,9 @@ const TextForm = (props) => {
         <h1>Your text Summary</h1>
 
         <p>
-          Total {text.split(" ").length} words and {text.length} Characters
+          {`Total ${text.length > 0 ?text.trim().split(" ").length:0} words and ${text.length} Characters`}
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes to read</p>
+        <p>{text.length>0 ? 0.008 * text.trim().split(" ").length:0} Minutes to read</p>
         <h3>Preview</h3>
         <p>{text.length>0?text:"Enter something in the Textbox to preview it"}</p>
       </div>

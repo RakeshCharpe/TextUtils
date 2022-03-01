@@ -30,7 +30,7 @@ const About = () => {
     }
   return (
     <div className="container" style={mystyle}>
-      <h2 >About Us</h2>
+      <h2>About Us</h2>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={mystyle}>
           <h2 className="accordion-header" id="headingOne">
@@ -130,8 +130,8 @@ const About = () => {
         </div>
       </div>
       <div className="container my-3">
-              <button type="button" onClick={ toggleStyle }className={btnclass}>
-         {btnText}
+        <button type="button" onClick={toggleStyle} className={btnclass}>
+          {btnText}
         </button>
       </div>
     </div>

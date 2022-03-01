@@ -4,6 +4,13 @@ import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  
+} from "react-router-dom";
+import Contact from "./components/Contact";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -21,7 +28,7 @@ function App() {
     })
     setTimeout(() => {
       setAlert(null);
-    }, 1500);
+    }, 2000);
   };
   const toggleMode = () => {
     if (mode === "light") {
@@ -37,17 +44,33 @@ function App() {
 
   return (
     <>
-      <Navbar
-        title="TextUtils"
-        aboutText="About Us"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        <TextForm showAlert={ showAlert }heading="Enter the text to analyze below" mode={mode} />
-        {/* <About /> */}
-      </div>
+      <Router>
+        <Navbar
+          title="TextUtils"
+          aboutText="About Us"
+          mode={mode}
+          toggleMode={toggleMode}
+        />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>
+            {/* use exact keyword to exact matching path */}
+            <Route exact path="/about" >
+              <About />
+            </Route>
+            <Route exact path="/" >
+              <TextForm
+                showAlert={showAlert}
+                heading="Enter the text to analyze below"
+                mode={mode}
+              />
+            </Route>
+            <Route exact path="/contact">
+              <Contact />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }
