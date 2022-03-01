@@ -7,18 +7,39 @@ const TextForm = (props) => {
     setText(event.target.value);
   };
   const handleUpClick = () => {
-    setText(text.toUpperCase());
+    if (text.length > 0) {
+      setText(text.toUpperCase());
+      props.showAlert("Converted to UpperCase Successfully", "success");
+    } else{
+          props.showAlert("Please Enter Something in the Textbox", "warning");
+    }
   };
   const handleDownClick = () => {
-    setText(text.toLowerCase());
+    if (text.length > 0) {
+      setText(text.toLowerCase());
+      props.showAlert("Converted to LowerCase Successfully", "success");
+    } else {
+       props.showAlert("Please Enter Something in the Textbox", "warning");
+    }
   };
   const handleClearClick = () => {
-    setText("");
+    if (text.length > 0) {
+      setText("");
+      props.showAlert("Clear text Successfully", "success");
+    } else {
+       props.showAlert("Please Enter Something in the Textbox", "warning");
+    }
   };
-   const handleExtraSpaces = () => {
-     let newText = text.split(/[ ]+/);
-     setText(newText.join(" "));
-   };
+  const handleExtraSpaces = () => {
+    if (text.length > 0) {
+      let newText = text.split(/[ ]+/);
+      setText(newText.join(" "));
+      props.showAlert("Extra Space remove Successfully", "success");
+    } else {
+       props.showAlert("Please Enter Something in the Textbox", "warning");
+    }
+  };
+  
   return (
     <>
       <div
